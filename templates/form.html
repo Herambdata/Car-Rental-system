@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} {{title}} {% endblock %}
+
+{% block search %}
+
+{% endblock %}
+{% block nav %}
+<div class="collapse navbar-collapse" id="myNavbar">
+  <ul class="navbar-nav navbar-right">
+    <li class="nav-item"><a class="nav-link" href="{% url 'adminIndex' %}"><span class="glyphicon glyphicon-home"></span> Car List</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'order_list' %}"><span class="glyphicon glyphicon-tags"></span> Order List</a></li class="nav-item">
+    <li class="nav-item"><a class="nav-link" href="{% url 'message' %}"><span class="glyphicon glyphicon-envelope"></span> Message</a></li class="nav-item">
+      <li class="nav-item"><a class="nav-link" href="{% url 'car_create' %}"><span class="glyphicon glyphicon-plus"></span> Add Car</a></li class="nav-item">
+    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><span class="glyphicon glyphicon-share"></span> Logout</a></li class="nav-item">
+  </ul>
+</div>
+{% endblock %}
+{% block body %}
+<div class ='col-sm-5 col-sm-offset-3'>
+    <h1>{{ title }}</h1><hr>
+
+    <form method="POST" action="">{% csrf_token %}
+      {{form|crispy}}
+        <div class="pull-right">
+            <input type="submit" class="btn btn-primary" value="{{ title }}"/>
+        </div>
+
+</form>
+</div>
+{% endblock %}
